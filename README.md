@@ -11,3 +11,9 @@ $ npm install
 ```
 $ npm run start
 ```
+
+## Create .env
+
+- Copy keys from .env_example
+
+- Generate your JIRA token from https://id.atlassian.com/manage-profile/security/api-tokens

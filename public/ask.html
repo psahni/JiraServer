@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    textarea {
+      width: 700px;
+      height: 50px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    
+    #loader {
+      display: none;
+      margin-top: 10px;
+      margin-left: -40px;
+      color: transparent;
+      background-image: url("/images/loader.gif");
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+
+    #response {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jira Chat Bot</h1>
+  <textarea id="query" placeholder="Enter your query here..."></textarea>
+  <br>
+  <button onclick="sendQuery()">Submit</button>
+  <div id="loader">Loading...</div>
+  <div id="response"></div>
+
+  <script>
+    async function sendQuery() {
+      const query = document.getElementById('query').value;
+      if (!query) {
+        alert('Please enter a query!');
+        return;
+      }
+
+      try {
+        document.getElementById('loader').style.display = 'block';
+        const response = await fetch('/llm/fetch_summary', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+        document.getElementById('response').innerText = data.data;
+        document.getElementById('response').style.display = 'block';
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('response').style.display = 'none';
+        document.getElementById('response').innerText = 'Failed to get a response.';
+      } finally {
+        document.getElementById('loader').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

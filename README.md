@@ -17,3 +17,11 @@ $ npm run start
 - Copy keys from .env_example
 
 - Generate your JIRA token from https://id.atlassian.com/manage-profile/security/api-tokens
+
+## Mock response
+
+- Create file data/audit_api_response.js
+
+- I have create a mock response in data/audit_api_response.js
+
+- please ask for it

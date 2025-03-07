@@ -1,0 +1,16 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+const { 
+  CONFLUENCE_API_TOKEN, 
+  CONFLUENCE_USERNAME, 
+  CONFLUENCE_BASE_URL, 
+  CONFLUENCE_SPACE_KEY 
+} = process.env;
+
+export {
+  CONFLUENCE_API_TOKEN,
+  CONFLUENCE_USERNAME,
+  CONFLUENCE_BASE_URL,
+  CONFLUENCE_SPACE_KEY
+}

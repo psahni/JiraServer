@@ -25,3 +25,11 @@ $ npm run start
 - I have create a mock response in data/audit_api_response.js
 
 - please ask for it
+
+## Prompt Examples
+
+### Summary
+
+- Please generate detailed summary of the audit response, cover every important detail like comment left, issue status change etc. Give me bulleted list
+
+### Question and Answers
